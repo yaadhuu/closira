@@ -1,0 +1,43 @@
+ARIA: Hi! Welcome to Bloom Aesthetics Clinic.
+ARIA: How can I help you today?
+
+YOU: im interested in getting fillers
+
+ARIA: Fillers can be a great way to enhance your features. At Bloom Aesthetics Clinic, we offer dermal fillers for lips, cheeks, and jawline contouring, starting from £250. Would you like to book a free consultation with one of our qualified aestheticians to discuss your options?
+
+
+ARIA: Before we continue, can I ask a few quick questions?
+
+ARIA: What treatment are you interested in?
+YOU: for filler treatment
+
+ARIA: Have you had aesthetic treatments before?
+YOU: no
+
+ARIA: How did you hear about us?
+YOU: online
+
+ARIA: Thanks for sharing that.
+
+YOU: exit
+
+Generating session summary...
+
+=======================================================
+SESSION SUMMARY
+=======================================================
+{
+  "customer_intent": "interested in getting fillers",
+  "key_details": [
+    "interested in fillers",
+    "no prior aesthetic treatments",
+    "found us online"
+  ],
+  "sop_gaps": [
+    "no mention of potential risks or side effects",
+    "no discussion of aftercare"
+  ],
+  "escalations": [],
+  "next_action": "book a free consultation with a qualified aesthetician"
+}
+=======================================================

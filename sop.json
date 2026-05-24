@@ -1,0 +1,30 @@
+{
+  "business_name": "Bloom Aesthetics Clinic",
+  "hours": "Monday to Saturday, 9:00 AM to 7:00 PM. Closed on Sundays.",
+  "services": {
+    "botox": {
+      "price": "from £200",
+      "description": "Anti-wrinkle injections for forehead, frown lines, and crow's feet."
+    },
+    "fillers": {
+      "price": "from £250",
+      "description": "Dermal fillers for lips, cheeks, and jawline contouring."
+    },
+    "consultation": {
+      "price": "Free",
+      "description": "Initial consultation with a qualified aesthetician."
+    }
+  },
+  "booking": {
+    "methods": ["WhatsApp", "Website"],
+    "cancellation_policy": "24-hour notice required for cancellations."
+  },
+  "escalate_if": [
+    "complaint",
+    "medical question",
+    "pricing negotiation",
+    "more than 2 unanswered questions",
+    "angry customer",
+    "customer requests human agent"
+  ]
+}

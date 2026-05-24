@@ -1,0 +1,70 @@
+=======================================================
+      Closira — AI Support Assistant
+         Bloom Aesthetics Clinic
+=======================================================
+Type 'exit' anytime to end the session.
+
+ARIA: Hi! Welcome to Bloom Aesthetics Clinic.
+ARIA: How can I help you today?
+
+YOU: what r your opening hours
+
+ARIA: Our opening hours are Monday to Saturday, 9:00 AM to 7:00 PM, and we're closed on Sundays.
+
+
+ARIA: Before we continue, can I ask a few quick questions?
+
+ARIA: What treatment are you interested in?
+YOU: acne treatment
+
+ARIA: Have you had aesthetic treatments before?
+YOU: no
+
+ARIA: How did you hear about us?
+YOU: friend
+
+ARIA: Thanks for sharing that.
+
+YOU: How do I book an appointment
+
+ARIA: You can book an appointment with us through WhatsApp or our website, which one would you prefer?
+
+YOU: i prefer whatsapp
+
+ARIA: You can reach us on WhatsApp to book an appointment, what kind of treatment are you interested in?
+
+YOU: What's included in a free consultation?
+
+ARIA: Our free consultation includes an initial meeting with a qualified aesthetician to discuss your concerns and create a personalized treatment plan.
+
+YOU: Do I need to pay anything upfront?
+
+ARIA: No, the consultation itself is free, but if you decide to book a treatment, we'll discuss the pricing and payment options with you then
+
+YOU: okay thank u
+
+ARIA: You're welcome, feel free to reach out if you have any other questions
+
+YOU: exit
+
+Generating session summary...
+
+=======================================================
+SESSION SUMMARY
+=======================================================
+{
+  "customer_intent": "booking an appointment for acne treatment",
+  "key_details": [
+    "opening hours",
+    "booking through WhatsApp",
+    "free consultation includes personalized treatment plan",
+    "no payment upfront"
+  ],
+  "sop_gaps": [
+    "no clear information on treatment pricing",
+    "no information on consultation duration"
+  ],
+  "escalations": [],
+  "next_action": "customer to reach out on WhatsApp to book an appointment"
+}
+=======================================================
