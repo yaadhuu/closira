@@ -1,90 +1,143 @@
 # Closira — AI Customer Support Agent
 
-An AI-powered customer support workflow built for Bloom Aesthetics Clinic, developed as part of the Closira AI Engineering Intern assignment.
+An AI-powered customer support workflow built for **Bloom Aesthetics Clinic** as part of the **Closira AI Engineering Intern Assignment**.
 
-The agent handles inbound customer enquiries end-to-end — answering questions from a defined SOP, qualifying leads, detecting escalation triggers, and generating structured session summaries.
-
----
-
-## How it works
-Customer sends message
-↓
-Aria responds using only SOP data (no hallucination)
-↓
-Code checks JSON response for escalation flag
-↓
-If escalate → log reason, notify human agent
-↓
-After first answer → collect 3 qualification questions
-↓
-Customer types exit → structured summary generated
-
-## Four Stages
-
-| Stage | What happens |
-|---|---|
-| FAQ Answering | Responds strictly from SOP data — no guessing |
-| Lead Qualification | Asks 3 natural questions to understand the customer |
-| Escalation Detection | Flags complaints, out-of-scope questions, angry sentiment |
-| Session Summary | Structured summary with intent, gaps, and next action |
+The system handles inbound customer conversations end-to-end by:
+- answering questions using SOP-based knowledge
+- qualifying leads through structured questions
+- detecting escalation scenarios
+- generating structured conversation summaries
 
 ---
 
-## Tech Stack
+# Features
 
-- **Python 3.10+**
-- **Groq API** — LLaMA 3.3 70B (`llama-3.3-70b-versatile`)
-- **groq** — Groq Python SDK
-- **python-dotenv** — environment variable management
+## 1. FAQ Answering
+Answers customer questions strictly from the provided SOP data.
+
+- No hallucinated responses
+- SOP acts as the single source of truth
+- Graceful handling of unknown questions
 
 ---
 
-## Project Structure
+## 2. Lead Qualification
+Collects structured customer information through natural conversation.
+
+Questions include:
+- treatment interest
+- previous aesthetic experience
+- referral source
+
+---
+
+## 3. Escalation Detection
+Detects when a conversation should be handed to a human agent.
+
+Escalation triggers include:
+- out-of-scope questions
+- complaints or frustration
+- medical questions outside SOP scope
+- explicit request for human support
+- repeated low-confidence responses
+
+---
+
+## 4. Conversation Summary
+Generates a structured session summary at the end of each interaction.
+
+Summary includes:
+- customer intent
+- important details collected
+- SOP gaps
+- escalation reasons
+- recommended next action
+
+---
+
+# Workflow
+
+```text
+Customer Message
+       ↓
+AI responds using SOP only
+       ↓
+JSON response parsed by backend
+       ↓
+Escalation logic checked
+       ↓
+Lead qualification questions collected
+       ↓
+Session summary generated on exit
+```
+
+---
+
+# Tech Stack
+
+- Python 3.10+
+- Groq API
+- LLaMA 3.3 70B (`llama-3.3-70b-versatile`)
+- groq Python SDK
+- python-dotenv
+
+---
+
+# Project Structure
+
+```text
 closira/
-├── main.py                  # Core conversation loop and AI workflow
-├── sop.json                 # Business knowledge base (single source of truth)
-├── prompt_design.md         # Prompt design decisions and reasoning
-├── requirements.txt         # Python dependencies
+├── main.py
+├── sop.json
+├── prompt_design.md
 ├── README.md
+├── requirements.txt
 └── test_transcripts/
-├── in_scope.txt         # Test 1: question answered from SOP
-├── out_of_scope.txt     # Test 2: escalation on unknown service
-├── escalation.txt       # Test 3: angry customer detected
-├── qualification.txt    # Test 4: lead qualification flow
-└── summary.txt          # Test 5: full session with summary
+    ├── in_scope.txt
+    ├── out_of_scope.txt
+    ├── escalation.txt
+    ├── qualification.txt
+    └── summary.txt
+```
 
 ---
 
-## Setup
+# Setup
 
-**1. Clone the repo**
+## 1. Clone the Repository
+
 ```bash
 git clone <your-repo-url>
 cd closira
 ```
 
-**2. Install dependencies**
+## 2. Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
-**3. Add your Groq API key**
+## 3. Configure Environment Variables
 
-Create a `.env` file in the root:
-GROQ_API_KEY=your_key_here
+Create a `.env` file in the project root:
 
-**4. Run**
+```env
+GROQ_API_KEY=your_api_key_here
+```
+
+## 4. Run the Application
+
 ```bash
 python main.py
 ```
 
-Type `exit` at any point to end the session and generate the summary.
+Type `exit` anytime to end the conversation and generate the session summary.
 
 ---
 
-## Key Design Decision
+# Structured JSON Output
 
-The model always responds in **JSON** — not plain text.
+The AI always responds in structured JSON format:
 
 ```json
 {
@@ -95,23 +148,38 @@ The model always responds in **JSON** — not plain text.
 }
 ```
 
-This makes escalation detection programmatic and reliable. The code checks `result["escalate"]` directly — no string matching, no guessing from plain text.
+This allows the backend to:
+- detect escalation programmatically
+- avoid unreliable text parsing
+- track confidence levels cleanly
 
 ---
 
-## Escalation Triggers
+# Design Decisions
 
-- Customer asks about a service not in the SOP
-- Complaint or frustration detected
-- Medical question outside SOP scope
-- Customer requests a human agent
-- 2 or more low-confidence responses in one session
+- SOP-grounded responses to prevent hallucinations
+- Structured JSON outputs for reliable workflow control
+- Confidence-based escalation for uncertain conversations
+- Lightweight CLI implementation focused on AI workflow logic
 
 ---
 
-## Limitations
+# Limitations
 
-- CLI only — no frontend or WhatsApp integration (out of scope for this prototype)
-- Qualification questions currently trigger after the first message regardless of context
-- Sentiment detection relies on LLM judgment, not a dedicated model
-- No persistent storage between sessions
+- CLI only — no frontend or messaging integration
+- No persistent memory between sessions
+- Sentiment detection relies on LLM reasoning
+- Qualification flow is rule-based, not dynamically timed
+- Full conversation history is sent each turn, which may increase token usage in long sessions
+
+---
+
+# Test Scenarios Included
+
+The `test_transcripts/` folder contains sample conversations for:
+
+1. In-SOP FAQ handling  
+2. Out-of-scope escalation  
+3. Complaint/escalation detection  
+4. Lead qualification flow  
+5. Session summary generation
