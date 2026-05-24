@@ -1,4 +1,4 @@
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ebfd6ed6-5f0d-4e0c-b9be-54c8c04d073b" /># Closira — AI Customer Support Agent
+# Closira — AI Customer Support Agent
 
 An AI-powered customer support workflow built for **Bloom Aesthetics Clinic** as part of the **Closira AI Engineering Intern Assignment**.
 
