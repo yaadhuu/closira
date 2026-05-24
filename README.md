@@ -1,4 +1,4 @@
-# Closira — AI Customer Support Agent
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ebfd6ed6-5f0d-4e0c-b9be-54c8c04d073b" /># Closira — AI Customer Support Agent
 
 An AI-powered customer support workflow built for **Bloom Aesthetics Clinic** as part of the **Closira AI Engineering Intern Assignment**.
 
@@ -171,6 +171,8 @@ This allows the backend to:
 - Sentiment detection relies on LLM reasoning
 - Qualification flow is rule-based, not dynamically timed
 - Full conversation history is sent each turn, which may increase token usage in long sessions
+- Escalation ends the conversation abruptly — a production version would allow continuation
+- Qualification questions always trigger after the first message, even if the customer is mid-complaint
 
 ---
 
